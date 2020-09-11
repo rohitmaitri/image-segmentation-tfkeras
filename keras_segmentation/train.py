@@ -3,7 +3,7 @@ from .data_utils.data_loader import image_segmentation_generator, \
     verify_segmentation_dataset
 import glob
 import six
-from keras.callbacks import Callback
+from tensorflow.keras.callbacks import Callback
 
 
 def find_latest_checkpoint(checkpoints_path, fail_safe=True):
@@ -33,7 +33,7 @@ def find_latest_checkpoint(checkpoints_path, fail_safe=True):
 
 
 def masked_categorical_crossentropy(gt, pr):
-    from keras.losses import categorical_crossentropy
+    from tensorflow.keras.losses import categorical_crossentropy
     mask = 1 - gt[:, :, 0]
     return categorical_crossentropy(gt, pr) * mask
 
